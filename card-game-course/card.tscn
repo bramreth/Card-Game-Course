@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://bj6ru11r8d21u"]
+
+[ext_resource type="PackedScene" uid="uid://dw2fqx5ptc75j" path="res://Assets/card.glb" id="1_tnrs2"]
+[ext_resource type="Texture2D" uid="uid://d0iseuse8qa6x" path="res://Assets/dork.png" id="2_r8feu"]
+[ext_resource type="Texture2D" uid="uid://cmwrq3cd8la07" path="res://Assets/gatherer.png" id="3_217eg"]
+[ext_resource type="Texture2D" uid="uid://dy7mc23jx1ko4" path="res://Assets/1Berry.png" id="4_u1igt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vlmb0"]
+shading_mode = 0
+albedo_texture = ExtResource("2_r8feu")
+
+[node name="Card" type="Node3D"]
+
+[node name="card" parent="." instance=ExtResource("1_tnrs2")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, -0.012)
+
+[node name="Cube_002" parent="card" index="1"]
+material_override = SubResource("StandardMaterial3D_vlmb0")
+
+[node name="CardName" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+pixel_size = 0.002
+text = "Card Name"
+font_size = 88
+outline_size = 44
+
+[node name="PowerLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, -0.65, 0)
+pixel_size = 0.002
+text = "1"
+font_size = 132
+outline_size = 44
+
+[node name="HealthLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, -0.65, 0)
+pixel_size = 0.002
+text = "1"
+font_size = 132
+outline_size = 44
+
+[node name="AbilityTexture" type="Sprite3D" parent="."]
+transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, 0, -0.5, 0)
+texture = ExtResource("3_217eg")
+
+[node name="CostTexture" type="Sprite3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.45, 0.5, 0)
+texture = ExtResource("4_u1igt")
+
+[editable path="card"]
