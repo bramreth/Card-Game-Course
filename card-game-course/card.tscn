@@ -1,15 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://bj6ru11r8d21u"]
+[gd_scene load_steps=8 format=3 uid="uid://bj6ru11r8d21u"]
 
+[ext_resource type="Script" path="res://card.gd" id="1_0qtmy"]
 [ext_resource type="PackedScene" uid="uid://dw2fqx5ptc75j" path="res://Assets/card.glb" id="1_tnrs2"]
-[ext_resource type="Texture2D" uid="uid://d0iseuse8qa6x" path="res://Assets/dork.png" id="2_r8feu"]
+[ext_resource type="Resource" uid="uid://ukkxy2hajo4k" path="res://CardResources/gorgon.tres" id="2_0k5li"]
+[ext_resource type="Texture2D" uid="uid://cofu70iuag2l8" path="res://Assets/gorgon.png" id="2_4bnrn"]
 [ext_resource type="Texture2D" uid="uid://cmwrq3cd8la07" path="res://Assets/gatherer.png" id="3_217eg"]
 [ext_resource type="Texture2D" uid="uid://dy7mc23jx1ko4" path="res://Assets/1Berry.png" id="4_u1igt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vlmb0"]
 shading_mode = 0
-albedo_texture = ExtResource("2_r8feu")
+albedo_texture = ExtResource("2_4bnrn")
 
 [node name="Card" type="Node3D"]
+script = ExtResource("1_0qtmy")
+card_resource = ExtResource("2_0k5li")
 
 [node name="card" parent="." instance=ExtResource("1_tnrs2")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, -0.012)
@@ -20,21 +24,21 @@ material_override = SubResource("StandardMaterial3D_vlmb0")
 [node name="CardName" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 pixel_size = 0.002
-text = "Card Name"
+text = "Gorgon"
 font_size = 88
 outline_size = 44
 
 [node name="PowerLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, -0.65, 0)
 pixel_size = 0.002
-text = "1"
+text = "2"
 font_size = 132
 outline_size = 44
 
 [node name="HealthLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, -0.65, 0)
 pixel_size = 0.002
-text = "1"
+text = "3"
 font_size = 132
 outline_size = 44
 

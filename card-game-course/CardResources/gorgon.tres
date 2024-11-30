@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=3 format=3 uid="uid://ukkxy2hajo4k"]
+
+[ext_resource type="Texture2D" uid="uid://cofu70iuag2l8" path="res://Assets/gorgon.png" id="1_pwkvu"]
+[ext_resource type="Script" path="res://CardResource.gd" id="2_ti2dx"]
+
+[resource]
+script = ExtResource("2_ti2dx")
+card_name = "Gorgon"
+power = 2
+health = 2
+cost = 1
+ability = 0
+card_art = ExtResource("1_pwkvu")
