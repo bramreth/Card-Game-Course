@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://s00wshaxg5ws"]
+
+[ext_resource type="Script" path="res://hand.gd" id="1_teh01"]
+[ext_resource type="PackedScene" uid="uid://bj6ru11r8d21u" path="res://card.tscn" id="2_erwcj"]
+
+[sub_resource type="Curve" id="Curve_o5ew7"]
+_data = [Vector2(0, 0), 0.0, 2.0, 0, 0, Vector2(0.5, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_j30ra"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 2.0, 0, 1, Vector2(1, 1), 2.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_dn8lp"]
+min_value = -15.0
+max_value = 15.0
+_data = [Vector2(0, 15), 0.0, 0.0, 0, 0, Vector2(1, -15), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Hand" type="Node3D"]
+script = ExtResource("1_teh01")
+height_curve = SubResource("Curve_o5ew7")
+width_cuve = SubResource("Curve_j30ra")
+rotation_curve = SubResource("Curve_dn8lp")
+
+[node name="Card" parent="." instance=ExtResource("2_erwcj")]
+transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="Card2" parent="." instance=ExtResource("2_erwcj")]
+transform = Transform3D(0.983846, -0.179017, 0, 0.179017, 0.983846, 0, 0, 0, 1, -1, 0.375, 0.02)
+
+[node name="Card3" parent="." instance=ExtResource("2_erwcj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.04)
+
+[node name="Card4" parent="." instance=ExtResource("2_erwcj")]
+transform = Transform3D(0.983846, 0.179017, 0, -0.179017, 0.983846, 0, 0, 0, 1, 1, 0.375, 0.06)
+
+[node name="Card5" parent="." instance=ExtResource("2_erwcj")]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 2, 0, 0.08)
