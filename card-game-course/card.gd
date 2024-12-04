@@ -17,6 +17,8 @@ const GATHERER = preload("res://Assets/gatherer.png")
 @onready var cost_texture: Sprite3D = $CostTexture
 
 func setup_card(resource_in: CardResource) -> void:
+	if not is_inside_tree():
+		await ready
 	card_name.text = resource_in.card_name
 	power_label.text = str(resource_in.power)
 	health_label.text = str(resource_in.health)

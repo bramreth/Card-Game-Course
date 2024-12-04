@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfrlkygatw4kn"]
+
+[ext_resource type="PackedScene" uid="uid://ct5ocfjltmoe3" path="res://Assets/KayKit/Assets/gltf/floor_tile_extralarge_grates.gltf" id="1_a127f"]
+[ext_resource type="PackedScene" uid="uid://cuc6vmb7degcn" path="res://Assets/KayKit/Assets/gltf/table_long_tablecloth.gltf" id="2_scslw"]
+[ext_resource type="PackedScene" uid="uid://s00wshaxg5ws" path="res://hand.tscn" id="3_rl4wa"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tqmnk"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_hfml6"]
+sky_material = SubResource("ProceduralSkyMaterial_tqmnk")
+
+[sub_resource type="Environment" id="Environment_bf7x7"]
+background_mode = 2
+sky = SubResource("Sky_hfml6")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="PlaySpace" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bf7x7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="floor_tile_extralarge_grates2" parent="." instance=ExtResource("1_a127f")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="table_long_tablecloth2" parent="." instance=ExtResource("2_scslw")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 12, 2)
+fov = 45.0
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Camera3D"]
+remote_path = NodePath("../../Zones/Hand")
+update_position = false
+update_scale = false
+
+[node name="Zones" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="Hand" parent="Zones" instance=ExtResource("3_rl4wa")]
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 3, 3)

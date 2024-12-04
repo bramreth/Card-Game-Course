@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" path="res://card.gd" id="1_0qtmy"]
 [ext_resource type="PackedScene" uid="uid://dw2fqx5ptc75j" path="res://Assets/card.glb" id="1_tnrs2"]
-[ext_resource type="Texture2D" uid="uid://d0iseuse8qa6x" path="res://Assets/dork.png" id="2_r8feu"]
 [ext_resource type="Resource" uid="uid://c7n4riw6frydi" path="res://CardResources/dork.tres" id="2_xyvb4"]
 [ext_resource type="Texture2D" uid="uid://cmwrq3cd8la07" path="res://Assets/gatherer.png" id="3_217eg"]
+[ext_resource type="Texture2D" uid="uid://cofu70iuag2l8" path="res://Assets/gorgon.png" id="4_pcro7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vlmb0"]
+resource_local_to_scene = true
 shading_mode = 0
-albedo_texture = ExtResource("2_r8feu")
+albedo_texture = ExtResource("4_pcro7")
 
 [node name="Card" type="Node3D"]
 script = ExtResource("1_0qtmy")

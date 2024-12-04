@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://s00wshaxg5ws"]
+[gd_scene load_steps=7 format=3 uid="uid://s00wshaxg5ws"]
 
 [ext_resource type="Script" path="res://hand.gd" id="1_teh01"]
 [ext_resource type="PackedScene" uid="uid://bj6ru11r8d21u" path="res://card.tscn" id="2_erwcj"]
+[ext_resource type="Resource" uid="uid://ukkxy2hajo4k" path="res://CardResources/gorgon.tres" id="3_cl8mq"]
 
 [sub_resource type="Curve" id="Curve_o5ew7"]
 _data = [Vector2(0, 0), 0.0, 2.0, 0, 0, Vector2(0.5, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.0, 0.0, 0, 0]
@@ -29,12 +30,14 @@ transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 
 
 [node name="Card2" parent="." instance=ExtResource("2_erwcj")]
 transform = Transform3D(0.983846, -0.179017, 0, 0.179017, 0.983846, 0, 0, 0, 1, -1, 0.375, 0.02)
+card_resource = ExtResource("3_cl8mq")
 
 [node name="Card3" parent="." instance=ExtResource("2_erwcj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.04)
 
 [node name="Card4" parent="." instance=ExtResource("2_erwcj")]
 transform = Transform3D(0.983846, 0.179017, 0, -0.179017, 0.983846, 0, 0, 0, 1, 1, 0.375, 0.06)
+card_resource = ExtResource("3_cl8mq")
 
 [node name="Card5" parent="." instance=ExtResource("2_erwcj")]
 transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 2, 0, 0.08)
