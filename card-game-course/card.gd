@@ -36,3 +36,11 @@ func setup_card(resource_in: CardResource) -> void:
 			ability_texture.texture = null
 			
 	cube_002.material_override.set("albedo_texture", resource_in.card_art)
+
+
+func _on_area_3d_mouse_entered() -> void:
+	scale = Vector3.ONE * 1.1
+
+
+func _on_area_3d_mouse_exited() -> void:
+	scale = Vector3.ONE
