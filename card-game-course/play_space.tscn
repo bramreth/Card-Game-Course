@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfrlkygatw4kn"]
+[gd_scene load_steps=10 format=3 uid="uid://dfrlkygatw4kn"]
 
 [ext_resource type="PackedScene" uid="uid://ct5ocfjltmoe3" path="res://Assets/KayKit/Assets/gltf/floor_tile_extralarge_grates.gltf" id="1_a127f"]
 [ext_resource type="PackedScene" uid="uid://cuc6vmb7degcn" path="res://Assets/KayKit/Assets/gltf/table_long_tablecloth.gltf" id="2_scslw"]
 [ext_resource type="Script" path="res://zones.gd" id="3_kiyfd"]
 [ext_resource type="PackedScene" uid="uid://s00wshaxg5ws" path="res://hand.tscn" id="3_rl4wa"]
 [ext_resource type="PackedScene" uid="uid://xt2jp8myqq7a" path="res://lane.tscn" id="4_v2r4u"]
+[ext_resource type="PackedScene" uid="uid://cmxt4he3x716j" path="res://deck.tscn" id="6_k8dy6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tqmnk"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -47,10 +48,14 @@ update_scale = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 script = ExtResource("3_kiyfd")
 
-[node name="Hand" parent="Zones" instance=ExtResource("3_rl4wa")]
+[node name="Hand" parent="Zones" node_paths=PackedStringArray("deck") instance=ExtResource("3_rl4wa")]
 transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 3, 3)
+deck = NodePath("../Deck")
 
 [node name="Lanes" type="Node3D" parent="Zones"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 1.2)
 
 [node name="MiddleLane" parent="Zones/Lanes" instance=ExtResource("4_v2r4u")]
+
+[node name="Deck" parent="Zones" instance=ExtResource("6_k8dy6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 0, 1.5)

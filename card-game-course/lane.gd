@@ -1,4 +1,5 @@
 extends Node3D
+class_name Lane
 
 signal selected(node: Node3D)
 
@@ -7,6 +8,7 @@ signal selected(node: Node3D)
 func add_card(card: Node3D) -> void:
 	var card_parent = card.get_parent()
 	card.reparent(card_slot, false)
+	card.owner = self
 	card.transform = card_slot.transform
 	if card_parent.has_method("sort_hand"):
 		card_parent.sort_hand()

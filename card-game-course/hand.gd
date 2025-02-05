@@ -1,6 +1,8 @@
 @tool
 extends Node3D
+class_name Hand
 
+@export var deck: Deck
 @export var height_curve: Curve
 @export var width_cuve: Curve
 @export var rotation_curve: Curve
@@ -28,3 +30,17 @@ func get_hand_width() -> float:
 			return 1.75
 		_:
 			return 2.0
+			
+func draw_card() -> void:
+	var card = deck.get_top_card()
+	if card == null:
+		# We can make the player lose if they run out of cards here.
+		return
+	card.reparent(self, false)
+	card.owner = self
+	sort_hand()
+	
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		draw_card()
+	

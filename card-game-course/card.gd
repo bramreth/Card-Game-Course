@@ -1,5 +1,6 @@
 @tool
 extends Node3D
+class_name Card
 
 signal play_card(card)
 
@@ -51,3 +52,12 @@ func _on_area_3d_mouse_exited() -> void:
 func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event.is_action_pressed("Click"):
 		play_card.emit(self)
+
+func is_in_hand() -> bool:
+	return owner is Hand
+	
+func is_in_lane() -> bool:
+	return owner is Lane
+	
+func is_in_deck() -> bool:
+	return owner is Deck
