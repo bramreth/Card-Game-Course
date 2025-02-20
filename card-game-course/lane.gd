@@ -1,8 +1,9 @@
 extends Node3D
 class_name Lane
 
-signal selected(node: Node3D)
+signal selected(node: Lane)
 
+@onready var highlight: MeshInstance3D = $Highlight
 @onready var card_slot: Node3D = $CardSlot
 
 func add_card(card: Node3D) -> void:
@@ -27,3 +28,6 @@ func _on_area_3d_mouse_exited() -> void:
 
 func is_empty() -> bool:
 	return card_slot.get_child_count() == 0
+
+func toggle_highlight(is_highlighted: bool) -> void:
+	highlight.visible = is_highlighted
