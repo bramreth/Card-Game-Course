@@ -1,9 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://xt2jp8myqq7a"]
+[gd_scene load_steps=5 format=3 uid="uid://xt2jp8myqq7a"]
 
 [ext_resource type="Script" path="res://lane.gd" id="1_14c2j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q2ebn"]
 size = Vector3(1.8, 2.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bvlgh"]
+shading_mode = 0
+albedo_color = Color(0.576471, 0.772549, 0.447059, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kc5ax"]
+material = SubResource("StandardMaterial3D_bvlgh")
+size = Vector3(1.8, 2.2, 0.1)
 
 [node name="Lane" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -15,6 +23,11 @@ script = ExtResource("1_14c2j")
 shape = SubResource("BoxShape3D_q2ebn")
 
 [node name="CardSlot" type="Node3D" parent="."]
+
+[node name="Highlight" type="MeshInstance3D" parent="."]
+visible = false
+cast_shadow = 0
+mesh = SubResource("BoxMesh_kc5ax")
 
 [connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]

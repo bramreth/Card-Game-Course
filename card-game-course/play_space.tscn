@@ -55,7 +55,13 @@ deck = NodePath("../Deck")
 [node name="Lanes" type="Node3D" parent="Zones"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 1.2)
 
+[node name="LeftLane" parent="Zones/Lanes" instance=ExtResource("4_v2r4u")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2, 0, 0)
+
 [node name="MiddleLane" parent="Zones/Lanes" instance=ExtResource("4_v2r4u")]
+
+[node name="RightLane" parent="Zones/Lanes" instance=ExtResource("4_v2r4u")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2, 0, 0)
 
 [node name="Deck" parent="Zones" instance=ExtResource("6_k8dy6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 0, 1.5)

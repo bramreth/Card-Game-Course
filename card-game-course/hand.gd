@@ -7,6 +7,9 @@ class_name Hand
 @export var width_cuve: Curve
 @export var rotation_curve: Curve
 
+@onready var rest_position = position
+var tuck_position := Vector3(0, -0.5, 0.75)
+
 func _ready() -> void:
 	sort_hand()
 
@@ -44,3 +47,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		draw_card()
 	
+func tuck_cards() -> void:
+	position = rest_position + tuck_position
+	sort_hand()
+	
+func untuck_cards() -> void:
+	position = rest_position
+	sort_hand()
