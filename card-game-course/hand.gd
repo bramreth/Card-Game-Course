@@ -18,10 +18,15 @@ func sort_hand() -> void:
 		var hand_ratio = 0.5
 		if get_child_count() > 1:
 			hand_ratio = float(card.get_index()) / float(get_child_count() - 1)
-		card.position.x = width_cuve.sample(hand_ratio) * get_hand_width()
-		card.position.y = height_curve.sample(hand_ratio)
-		card.position.z = card.get_index() * 0.02
-		card.rotation_degrees.z = rotation_curve.sample(hand_ratio)
+		var offset = Vector3.ZERO
+		offset.x += width_cuve.sample(hand_ratio) * get_hand_width()
+		offset.y += height_curve.sample(hand_ratio)
+		offset.z += card.get_index() * 0.1
+		card.target_position = global_position + global_basis * offset
+		card.target_rotation = global_rotation.rotated(
+			Vector3.FORWARD, 
+			deg_to_rad(rotation_curve.sample(hand_ratio))
+			)
 
 func get_hand_width() -> float:
 	match get_child_count():
@@ -39,7 +44,7 @@ func draw_card() -> void:
 	if card == null:
 		# We can make the player lose if they run out of cards here.
 		return
-	card.reparent(self, false)
+	card.reparent(self, true)
 	card.owner = self
 	sort_hand()
 	

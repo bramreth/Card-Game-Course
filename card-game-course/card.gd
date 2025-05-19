@@ -7,6 +7,10 @@ signal play_card(card)
 const _1_BERRY = preload("res://Assets/1Berry.png")
 const GATHERER = preload("res://Assets/gatherer.png")
 
+@export var target_position: Vector3
+@export var target_rotation: Vector3
+@export var transform_speed := 12.0
+
 @export var card_resource: CardResource:
 	set(value):
 		card_resource = value
@@ -18,6 +22,22 @@ const GATHERER = preload("res://Assets/gatherer.png")
 @onready var health_label: Label3D = $HealthLabel
 @onready var ability_texture: Sprite3D = $AbilityTexture
 @onready var cost_texture: Sprite3D = $CostTexture
+
+func _process(delta: float) -> void:
+	global_position = global_position.lerp(
+		target_position,
+		1.0 - exp(-transform_speed * delta)
+		)
+	global_rotation.x = lerp_angle(global_rotation.x, target_rotation.x,
+		1.0 - exp(-transform_speed * delta)
+		)
+	global_rotation.y = lerp_angle(global_rotation.y, target_rotation.y,
+		1.0 - exp(-transform_speed * delta)
+		)
+	global_rotation.z = lerp_angle(global_rotation.z, target_rotation.z,
+		1.0 - exp(-transform_speed * delta)
+		)
+	
 
 func setup_card(resource_in: CardResource) -> void:
 	if not is_inside_tree():
@@ -61,3 +81,6 @@ func is_in_lane() -> bool:
 	
 func is_in_deck() -> bool:
 	return owner is Deck
+	
+func exponential_decay(a: float, b: float, decay: float, delta: float) -> float:
+	return b + (a - b) * exp(-decay * delta)
