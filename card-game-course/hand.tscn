@@ -26,18 +26,23 @@ width_cuve = SubResource("Curve_j30ra")
 rotation_curve = SubResource("Curve_dn8lp")
 
 [node name="Card" parent="." instance=ExtResource("2_erwcj")]
-transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, -2, 0, 0)
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, -2, 0, 0)
+target_position = Vector3(-2, 0, 0)
 
 [node name="Card2" parent="." instance=ExtResource("2_erwcj")]
-transform = Transform3D(0.983846, -0.179017, 0, 0.179017, 0.983846, 0, 0, 0, 1, -1, 0.375, 0.02)
+transform = Transform3D(0.999998, 0, 0, 0, 0.999998, 0, 0, 0, 1, -1, 0.375, 0.02)
+target_position = Vector3(-1, 0.375, 0.1)
 card_resource = ExtResource("3_cl8mq")
 
 [node name="Card3" parent="." instance=ExtResource("2_erwcj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.04)
+target_position = Vector3(0, 0.5, 0.2)
 
 [node name="Card4" parent="." instance=ExtResource("2_erwcj")]
-transform = Transform3D(0.983846, 0.179017, 0, -0.179017, 0.983846, 0, 0, 0, 1, 1, 0.375, 0.06)
+transform = Transform3D(0.999998, 0, 0, 0, 0.999998, 0, 0, 0, 1, 1, 0.375, 0.06)
+target_position = Vector3(1, 0.375, 0.3)
 card_resource = ExtResource("3_cl8mq")
 
 [node name="Card5" parent="." instance=ExtResource("2_erwcj")]
-transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 2, 0, 0.08)
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 2, 0, 0.08)
+target_position = Vector3(2, 0, 0.4)

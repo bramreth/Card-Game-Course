@@ -14,7 +14,8 @@ func _ready() -> void:
 		new_card.card_resource = card_resource
 		card_slot.add_child(new_card)
 		new_card.owner = self
-		new_card.global_position += Vector3.UP * 0.025 * new_card.get_index()
+		new_card.target_position = global_position + Vector3.UP * 0.025 * new_card.get_index()
+		new_card.target_rotation = card_slot.global_rotation
 
 func get_top_card() -> Card:
 	if card_slot.get_children().is_empty():

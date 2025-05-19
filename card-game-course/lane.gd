@@ -8,9 +8,11 @@ signal selected(node: Lane)
 
 func add_card(card: Node3D) -> void:
 	var card_parent = card.get_parent()
-	card.reparent(card_slot, false)
+	card.reparent(card_slot, true)
 	card.owner = self
-	card.transform = card_slot.transform
+	card.target_rotation = card_slot.global_rotation
+	card.target_position = card_slot.global_position
+			
 	if card_parent.has_method("sort_hand"):
 		card_parent.sort_hand()
 	
