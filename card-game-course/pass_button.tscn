@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1pxjv4yp4nxo"]
+
+[ext_resource type="Script" path="res://pass_button.gd" id="1_fl3mg"]
+[ext_resource type="PackedScene" uid="uid://gona7uy7mff2" path="res://Assets/Assets-10-Taking-Turns/button_base_red.gltf" id="1_o3o1n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y575j"]
+albedo_color = Color(0.576471, 0.772549, 0.447059, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nxlm8"]
+size = Vector3(2, 1, 2)
+
+[node name="PassButton" type="Node3D"]
+script = ExtResource("1_fl3mg")
+
+[node name="button_base_red2" parent="." instance=ExtResource("1_o3o1n")]
+
+[node name="button_red" parent="button_base_red2/button_base_red" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_y575j")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_nxlm8")
+
+[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
+
+[editable path="button_base_red2"]
