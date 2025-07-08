@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgxcgbsyoigge"]
+
+[ext_resource type="Script" path="res://health_pool.gd" id="1_xwpxx"]
+
+[node name="HealthPool" type="Node3D"]
+script = ExtResource("1_xwpxx")
+
+[node name="Label3D" type="Label3D" parent="."]
+pixel_size = 0.01
+billboard = 1
+text = "5"
+font_size = 96
+outline_size = 36

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfrlkygatw4kn"]
+[gd_scene load_steps=13 format=3 uid="uid://dfrlkygatw4kn"]
 
 [ext_resource type="PackedScene" uid="uid://ct5ocfjltmoe3" path="res://Assets/KayKit/Assets/gltf/floor_tile_extralarge_grates.gltf" id="1_a127f"]
 [ext_resource type="PackedScene" uid="uid://cuc6vmb7degcn" path="res://Assets/KayKit/Assets/gltf/table_long_tablecloth.gltf" id="2_scslw"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://xt2jp8myqq7a" path="res://lane.tscn" id="4_v2r4u"]
 [ext_resource type="PackedScene" uid="uid://cmxt4he3x716j" path="res://deck.tscn" id="6_k8dy6"]
 [ext_resource type="PackedScene" uid="uid://d1pxjv4yp4nxo" path="res://pass_button.tscn" id="7_t7ij0"]
+[ext_resource type="PackedScene" uid="uid://cgxcgbsyoigge" path="res://health_pool.tscn" id="8_tpnnn"]
+[ext_resource type="PackedScene" uid="uid://7ktudouj48s1" path="res://game_over_window.tscn" id="9_tfelu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tqmnk"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -56,16 +58,27 @@ deck = NodePath("../Deck")
 [node name="Lanes" type="Node3D" parent="Zones"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 1.2)
 
-[node name="LeftLane" parent="Zones/Lanes" instance=ExtResource("4_v2r4u")]
+[node name="LeftLane" parent="Zones/Lanes" node_paths=PackedStringArray("defending_health") instance=ExtResource("4_v2r4u")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2, 0, 0)
+defending_health = NodePath("../../../EnemyHealthPool")
 
-[node name="MiddleLane" parent="Zones/Lanes" instance=ExtResource("4_v2r4u")]
+[node name="MiddleLane" parent="Zones/Lanes" node_paths=PackedStringArray("defending_health") instance=ExtResource("4_v2r4u")]
+defending_health = NodePath("../../../EnemyHealthPool")
 
-[node name="RightLane" parent="Zones/Lanes" instance=ExtResource("4_v2r4u")]
+[node name="RightLane" parent="Zones/Lanes" node_paths=PackedStringArray("defending_health") instance=ExtResource("4_v2r4u")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2, 0, 0)
+defending_health = NodePath("../../../EnemyHealthPool")
 
 [node name="Deck" parent="Zones" instance=ExtResource("6_k8dy6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 0, 1.5)
 
 [node name="PassButton" parent="." instance=ExtResource("7_t7ij0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, 0)
+
+[node name="PlayerHealthPool" parent="." instance=ExtResource("8_tpnnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 3.5, 1.5)
+
+[node name="EnemyHealthPool" parent="." instance=ExtResource("8_tpnnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -1.5)
+
+[node name="GameOverWindow" parent="." instance=ExtResource("9_tfelu")]

@@ -3,6 +3,9 @@ class_name Lane
 
 signal selected(node: Lane)
 
+@export var defending_health: HealthPool
+@export var defending_lane: Lane
+
 @onready var highlight: MeshInstance3D = $Highlight
 @onready var card_slot: Node3D = $CardSlot
 
@@ -33,3 +36,19 @@ func is_empty() -> bool:
 
 func toggle_highlight(is_highlighted: bool) -> void:
 	highlight.visible = is_highlighted
+	
+func start_attack(tween: Tween) -> void:
+	if is_empty() == false:
+		tween.tween_callback(toggle_highlight.bind(true))
+		tween.tween_interval(0.5)
+		tween.tween_callback(toggle_highlight.bind(false))
+		tween.tween_callback(deal_damage)
+	tween.tween_interval(0.25)
+		
+func deal_damage() -> void:
+	if is_empty():
+		return
+	var card = card_slot.get_child(0) as Card
+	var power = card.card_resource.power
+	defending_health.health -= power
+	
